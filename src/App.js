@@ -1,37 +1,38 @@
 import './App.css';
-import Counter from './Counter';
-import { useState} from 'react';
+import { useState } from 'react';
+import records from './records.json';
 
+function App(){
+  const[toDo,setToDo] = useState('')
+  const[toDoList, setToDoList] = useState(['Buy Milk', 'Go to a movie'])
 
-function App() {
-  const [delta, setDelta] = useState(1)
-  const [max, setMax] = useState(10)
-  const [restart, setReset] = useState(false)
-  
-  function handleDelta (event){
-  console.log(event);
-  setDelta(Number(event.target.value))
-  } 
-  
-  function handleMax (m){
-    console.log(m);
-    setMax((m.target.value))}
- 
-    function getReset(data){
-    console.log(data)
-    setReset(data)
+  function handleTodoChange(e){
+    setToDo(e.target.value)
   }
-  return (
+  return(
     <div className="App">
-      Delta
-      <input type= "number" value= {delta} onChange = {handleDelta}/>
-      <p/>Maximum Number
-      <input type= "number" value= {max} onChange={handleMax} />
-      <Counter delta = {delta} max ={max} getReset={getReset} needToReset={restart}/>
-      <Counter delta = {delta} max ={max} getReset={getReset} needToReset={restart}/>
+    <input value={toDo} onChange= {handleTodoChange}/>
+    <button>Add to list</button>
+    <h3>List of things to do</h3>
+    {
+      records.map(record =>{
+        return(
+          <div className='box'>
+            {record.name} {record.email}
+
+          </div>
+        )
+      })
+    }
+    <ul>
+      {toDoList.map(
+        toDo => (
+        <li>{toDo}</li>
+        )
+      )}
+    </ul>
     </div>
-    
-  );
+    );
 }
 
 export default App;

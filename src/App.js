@@ -5,7 +5,7 @@ import records from './records.json';
 function App(){
   const[toDo,setToDo] = useState('')
   const[toDoList, setToDoList] = useState(['Buy Milk', 'Go to a movie'])
-  
+   
   function handleTodoChange(e){
     setToDo(e.target.value)
   }

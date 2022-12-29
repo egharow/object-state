@@ -1,15 +1,10 @@
 import './App.css';
 import { useState } from 'react';
-import records from './records.json';
  
 function App(){
-  const[toDo,setToDo] = useState('')
-  const[toDoList, setToDoList] = useState(['Buy Milk', 'Go to a movie'])
-   
-  function handleTodoChange(e){
-    setToDo(e.target.value)
-  }
-  let arr = [
+
+  //const[toDo,setToDo] = useState('')
+  const[userList, setUserList] = useState([
     {
       "id": 1,
       "name": "Leanne Graham",
@@ -240,33 +235,44 @@ function App(){
         "bs": "target end-to-end models"
       }
     }
-  ]
-  function AddItem(){
-    setToDoList([...toDoList,toDo])
+  ])
+  
+  const[Name, setName] = useState("")
+  const[userName, setUserName]= useState("")
+  const[email, setEmail] =useState("")
+  
 
+  function handleUserName(u){
+    setUserName(u.target.value)
+  }
+  function handleName(n){
+    setName(n.target.value)
+  }
+  function handleEmail(e){
+    setEmail(e.target.value)
+  }
+  function Adduser(){
+    setUserList([...userList,{name:Name,username:userName, email:email}])
+    setName("")
+    setUserName("")
+    setEmail("")
   }
   return(
     <div className="App">
-    <input value={toDo} onChange= {handleTodoChange}/>
-    <button onClick={AddItem}>Add to list</button>
+    Name :<input value={Name} onChange= {handleName}/>
+    Email: <input value={email} onChange= {handleEmail}/>
+    User Name:<input value={userName} onChange= {handleUserName}/>
+    
+    <button onClick={Adduser}>Add to list</button>
     
     <h3>{//List of things to do
     } </h3>
     
-    {
-      records.map(record =>{
-        return(
-          <div className='box'>
-            {record.name} {record.email}
 
-          </div>
-        )
-      })
-    }
     <ul>
-      {toDoList.map(
-        toDo => (
-        <li>{toDo}</li>
+      {userList.map(
+        record => (
+        <li>{record.Name} {record.email}</li>
         )
       )}
     </ul>

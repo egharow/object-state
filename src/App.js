@@ -3,7 +3,6 @@ import { useState } from 'react';
  
 function App(){
 
-  //const[toDo,setToDo] = useState('')
   const[userList, setUserList] = useState([
     {
       "id": 1,
@@ -258,15 +257,12 @@ function App(){
     setEmail("")
   }
   return(
-    <div className="App">
+    <div className="App" >
     Name :<input value={Name} onChange= {handleName}/>
     Email: <input value={email} onChange= {handleEmail}/>
     User Name:<input value={userName} onChange= {handleUserName}/>
     
     <button onClick={Adduser}>Add to list</button>
-    
-    <h3>{//List of things to do
-    } </h3>
     
 
     <ul>

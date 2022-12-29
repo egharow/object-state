@@ -264,11 +264,10 @@ function App(){
     
     <button onClick={Adduser}>Add to list</button>
     
-
     <ul>
       {userList.map(
         record => (
-        <li>{record.Name} {record.email}</li>
+        <li> {record.email} {record.name}</li>
         )
       )}
     </ul>
